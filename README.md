@@ -20,7 +20,7 @@ To nie jest coaching. To inżynierskie podejście do pracy mózgu.
 
 Aby otrzymać pierwszą lekcję i instrukcję startową, zapisz się przez poniższy formularz:
 
-👉 **[ZAPISZ SIĘ NA WYZWANIE (Formularz)](LINK_DO_TWOJEGO_FORMULARZA_HTML_LUB_STRONY)**
+👉 **[ZAPISZ SIĘ NA WYZWANIE (Formularz)](https://devmentor-pl.github.io/mind-debugging-challenge/index.html)**
 
 ---
 
