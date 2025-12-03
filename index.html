@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyzwanie: Debugowanie Głowy | DevMentor</title>
+    <meta name="description" content="Darmowe 8-tygodniowe wyzwanie mailowe dla przyszłych programistów. Napraw błędy poznawcze i naucz się kodować efektywnie.">
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome (Ikony) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Fonty -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        /* Stylizacja Checkboxa */
+        .checkbox-wrapper input:checked + div {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .checkbox-wrapper input:checked + div svg {
+            display: block;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 selection:bg-blue-500 selection:text-white bg-slate-950">
+
+    <div class="max-w-5xl w-full bg-slate-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-800">
+        
+        <!-- LEWA STRONA: TREŚĆ / OFERTA -->
+        <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-slate-900 relative border-b md:border-b-0 md:border-r border-slate-800">
+            <!-- Dekoracja tła (Góra) -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600"></div>
+            
+            <div class="mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 mb-4">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="font-mono text-xs font-bold text-slate-300 tracking-wider uppercase">
+                        &lt;SYSTEM_UPDATE: 8_WEEKS /&gt;
+                    </span>
+                </div>
+                
+                <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                    Przestań debugować kod. <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 neon-text">Zacznij debugować głowę.</span>
+                </h1>
+                
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Masz wrażenie, że Twój procesor (intelekt) jest sprawny, ale problem leży w oprogramowaniu (nastawieniu)? Dołącz do inżynierskiego wyzwania.
+                </p>
+            </div>
+
+            <!-- Lista Korzyści -->
+            <div class="space-y-5">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center border border-slate-700 text-blue-400">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-white text-lg">Inwestycja: 120 minut</h3>
+                        <p class="text-sm text-slate-400">Łącznie przez 8 tygodni. Tylko 15 min tygodniowo.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center border border-slate-700 text-purple-400">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-white text-lg">Zero lania wody</h3>
+                        <p class="text-sm text-slate-400">Czysta inżynieria, badania naukowe i mechanizmy poznawcze.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center border border-slate-700 text-green-400">
+                        <i class="fa-solid fa-unlock-keyhole"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-white text-lg">100% Bezpłatnie</h3>
+                        <p class="text-sm text-slate-400">To darmowy cykl mailowy dla przyszłych programistów.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-slate-800 flex items-center gap-3">
+                <img src="https://devmentor.pl/wp-content/uploads/2021/10/mateusz-bogolubow-devmentor-square.jpg" alt="Mateusz Bogolubow" class="w-10 h-10 rounded-full grayscale opacity-80">
+                <div class="text-xs text-slate-500">
+                    <p class="font-bold text-slate-400">Mateusz Bogolubow</p>
+                    <p>Mentor programowania, DevMentor.pl</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRAWA STRONA: FORMULARZ -->
+        <div class="md:w-1/2 p-8 md:p-12 bg-slate-800 flex flex-col justify-center">
+            
+            <!-- Kontener Formularza -->
+            <div id="form-container" class="transition-opacity duration-300">
+                <h2 class="text-2xl font-bold mb-2 text-white">Dołącz do wyzwania</h2>
+                <p class="text-slate-400 mb-8 text-sm">Wypełnij formularz, aby otrzymać instrukcję startową.</p>
+
+                <form id="signup-form" class="space-y-5">
+                    
+                    <!-- Imię -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-300 mb-1">Imię</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <input type="text" id="name" name="name" required placeholder="Np. Mateusz"
+                                class="w-full pl-10 pr-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition shadow-sm">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-300 mb-1">Adres e-mail</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <input type="email" id="email" name="email" required placeholder="twoj@email.com"
+                                class="w-full pl-10 pr-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition shadow-sm">
+                        </div>
+                    </div>
+
+                    <!-- Zgoda / Checkbox -->
+                    <div class="flex items-start pt-2">
+                        <label class="checkbox-wrapper flex items-start cursor-pointer relative group">
+                            <input type="checkbox" id="privacy" name="privacy" required class="sr-only">
+                            <div class="w-5 h-5 bg-slate-900 border border-slate-600 rounded flex items-center justify-center transition mr-3 mt-0.5 group-hover:border-blue-500">
+                                <svg class="w-3 h-3 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-xs text-slate-400 leading-tight select-none">
+                                Zgadzam się na przetwarzanie danych w celu wysyłki kursu mailowego. Zapoznałem się z <a href="https://devmentor.pl/polityka-prywatnosci" target="_blank" class="text-blue-400 hover:text-blue-300 underline underline-offset-2 decoration-blue-400/30">Polityką Prywatności</a>.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Przycisk -->
+                    <button type="submit" id="submit-btn" 
+                        class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-4 rounded-lg shadow-lg shadow-blue-900/20 transform transition hover:-translate-y-0.5 flex items-center justify-center group">
+                        <span class="mr-2">Zapisz się bezpłatnie</span>
+                        <i class="fa-solid fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                </form>
+                
+                <p class="text-[10px] text-slate-600 mt-6 text-center">
+                    <i class="fa-solid fa-lock mr-1"></i> Twoje dane są bezpieczne. Zero spamu.
+                </p>
+            </div>
+
+            <!-- KOMUNIKAT SUKCESU (Ukryty domyślnie) -->
+            <div id="success-message" class="hidden text-center py-4 animate-fade-in">
+                <div class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6 ring-1 ring-green-500/30">
+                    <i class="fa-solid fa-check text-green-400 text-4xl"></i>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-white mb-2">Jesteś na liście!</h3>
+                <p class="text-slate-400 mb-8">
+                    To dopiero 50% sukcesu. Sprawdź teraz skrzynkę.
+                </p>
+                
+                <!-- Krok 1: Email -->
+                <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-700 text-left mb-4 flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-400 font-bold text-sm">1</div>
+                    <div>
+                        <p class="text-sm font-bold text-white mb-1">Znajdź e-mail "[START]"</p>
+                        <p class="text-xs text-slate-400">Odpisz na niego słowem <span class="text-yellow-400 font-mono bg-yellow-400/10 px-1 rounded">SZUKAM</span>, aby potwierdzić udział.</p>
+                    </div>
+                </div>
+
+                <!-- Krok 2: Kalendarz -->
+                <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-700 text-left mb-8 flex items-start gap-4">
+                    <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 text-purple-400 font-bold text-sm">2</div>
+                    <div>
+                        <p class="text-sm font-bold text-white mb-1">Zapisz termin</p>
+                        <p class="text-xs text-slate-400">Dodaj automatyczne przypomnienie na niedzielę.</p>
+                    </div>
+                </div>
+
+                <a href="http://devmentor.pl/kalendarz-debugowanie-glowy" target="_blank" 
+                   class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm font-bold transition w-full border border-slate-600 hover:border-slate-500">
+                    <i class="fa-regular fa-calendar-plus"></i>
+                    Dodaj do kalendarza
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SKRYPT JS -->
+    <script>
+        // --- KONFIGURACJA ---
+        // Wklej tutaj adres Webhooka z Make.com (moduł Webhooks -> Custom Webhook)
+        const WEBHOOK_URL = 'https://hook.eu1.make.com/TWOJ_UNIKALNY_HASH_WEBHOOKA'; 
+        // --------------------
+
+        const form = document.getElementById('signup-form');
+        const formContainer = document.getElementById('form-container');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = submitBtn.querySelector('span');
+        const btnIcon = submitBtn.querySelector('i');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // 1. Loading State
+            const originalText = btnText.innerText;
+            btnText.innerText = 'Przetwarzanie...';
+            btnIcon.className = 'fa-solid fa-circle-notch fa-spin ml-2';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            // 2. Data Collection
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                source: 'Landing Page HTML', // Tag źródła
+                privacy_policy_accepted: true
+            };
+
+            try {
+                // 3. Send to Make.com
+                // Używamy trybu 'no-cors' jeśli testujesz lokalnie, ale dla produkcji standardowy POST jest ok
+                // jeśli Make zwróci 200 OK.
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    // 4. Success UI
+                    formContainer.classList.add('hidden'); // Ukryj formularz
+                    successMessage.classList.remove('hidden'); // Pokaż sukces
+                } else {
+                    throw new Error('Błąd sieci: ' + response.statusText);
+                }
+
+            } catch (error) {
+                // 5. Error UI
+                alert('Wystąpił błąd podczas zapisu. Sprawdź połączenie i spróbuj ponownie.');
+                console.error('Submission Error:', error);
+                
+                // Reset Button
+                btnText.innerText = originalText;
+                btnIcon.className = 'fa-solid fa-arrow-right ml-2';
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        });
+    </script>
+</body>
+</html>
