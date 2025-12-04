@@ -11,7 +11,7 @@ Stworzyłem darmowy, 8-tygodniowy program mailowy, który naprawia te błędy.
 To nie jest coaching. To inżynierskie podejście do pracy mózgu.
 
 * **Czas trwania:** 8 tygodni
-* **Inwestycja:** 15 minut `[1 wiadomość]` tygodniowo  (łącznie 120 minut)
+* **Inwestycja:** 15 minut tygodniowo  (łącznie 120 minut)
 * **Koszt:** 0 zł
 
 ---
